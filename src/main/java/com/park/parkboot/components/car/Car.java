@@ -7,6 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 public class Car implements Serializable {
     @Id
@@ -17,23 +24,5 @@ public class Car implements Serializable {
     private String licenseNumber;
 
     @Column
-    private Integer color;
-
-    public Car() {
-
-    }
-    
-    public Car(String licenseNumber, Integer color) {
-        super();
-        this.licenseNumber = licenseNumber;
-        this.color = color;
-    }
-
-    public String getLicenseNumber() {
-        return this.licenseNumber;
-    }
-
-    public Integer getColor() {
-        return this.color;
-    }
+    private String color;
 }
