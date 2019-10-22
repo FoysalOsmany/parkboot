@@ -27,3 +27,7 @@ hs_err_pid*
 .settings/
 target/
 .history
+.factorypath
+
+# VsCode
+.vscode
