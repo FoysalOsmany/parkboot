@@ -19,12 +19,14 @@ public class Car implements Serializable {
     @Column
     private Integer color;
 
+    public Car() {
+
+    }
+    
     public Car(String licenseNumber, Integer color) {
+        super();
         this.licenseNumber = licenseNumber;
         this.color = color;
-    }
-
-    protected Car() {
     }
 
     public String getLicenseNumber() {
