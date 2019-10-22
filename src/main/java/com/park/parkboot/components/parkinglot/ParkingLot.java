@@ -18,4 +18,24 @@ public class ParkingLot implements Serializable {
 
     @Column
     private Integer capacity;
+
+    public ParkingLot(String name, Integer capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    protected ParkingLot() {
+    }
+
+    public Integer getParkingLotNumber() {
+        return this.parkingLotNumber;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Integer getCapacity() {
+        return this.capacity;
+    }
 }
