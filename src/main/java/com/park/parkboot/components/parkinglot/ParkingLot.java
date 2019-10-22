@@ -1,11 +1,20 @@
 package com.park.parkboot.components.parkinglot;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import com.park.parkboot.components.car.Car;
+
 
 @Entity
 public class ParkingLot implements Serializable {
@@ -19,12 +28,18 @@ public class ParkingLot implements Serializable {
     @Column
     private Integer capacity;
 
+    @OneToMany(cascade=CascadeType.ALL, targetEntity = Car.class)
+    @JoinColumn(name = "id")
+    private Set<Car> carsList = new HashSet<Car>();
+
+    public ParkingLot() {
+
+    }
+    
     public ParkingLot(String name, Integer capacity) {
+        super();
         this.name = name;
         this.capacity = capacity;
-    }
-
-    protected ParkingLot() {
     }
 
     public Integer getParkingLotNumber() {
@@ -37,5 +52,9 @@ public class ParkingLot implements Serializable {
 
     public Integer getCapacity() {
         return this.capacity;
+    }
+
+    public Set<Car> getCarList() {
+        return carsList;
     }
 }
