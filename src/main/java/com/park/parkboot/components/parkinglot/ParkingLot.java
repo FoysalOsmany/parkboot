@@ -1,16 +1,14 @@
 package com.park.parkboot.components.parkinglot;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 import com.park.parkboot.components.car.Car;
 
@@ -33,7 +31,15 @@ public class ParkingLot implements Serializable {
     @Column
     private Integer capacity;
 
-    @OneToMany(cascade=CascadeType.ALL, targetEntity = Car.class)
-    @JoinColumn(name = "id")
-    private Set<Car> carsList = new HashSet<Car>();
+    @Column
+    private Double perHourRate;
+
+    @OneToMany(mappedBy="parkingLot", targetEntity = Car.class)
+    private List<Car> cars;
+
+    @PrePersist
+    void preInsert() {
+    if (this.perHourRate == null)
+        this.perHourRate = 1.0;
+    }
 }
