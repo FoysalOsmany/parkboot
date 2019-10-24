@@ -23,12 +23,10 @@ public class ParkingLotService {
 
             Collections.sort((List<ParkingLot>) parkingLots,
                     (Comparator<? super ParkingLot>) (ParkingLot a, ParkingLot b) -> {
-                        Integer aHasEmptySlot = (a.getCapacity() - a.getCars().size()) > 0 
-                            ? 1 
-                            : Integer.MAX_VALUE / a.getParkingLotNumber();
-                        Integer bHasEmptySlot = (b.getCapacity() - b.getCars().size()) > 0 
-                            ? 1 
-                            : Integer.MAX_VALUE / b.getParkingLotNumber();
+                        Integer aHasEmptySlot = (a.getCapacity() - a.getCars().size()) > 0 ? 1
+                                : Integer.MAX_VALUE / a.getParkingLotNumber();
+                        Integer bHasEmptySlot = (b.getCapacity() - b.getCars().size()) > 0 ? 1
+                                : Integer.MAX_VALUE / b.getParkingLotNumber();
                         Integer aSortPriority = a.getParkingLotNumber() * aHasEmptySlot;
                         Integer bSortPriority = b.getParkingLotNumber() * bHasEmptySlot;
 

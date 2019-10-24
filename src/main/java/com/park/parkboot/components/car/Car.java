@@ -35,13 +35,18 @@ public class Car implements Serializable {
     @Column
     private Date checkinTime;
 
+    @Column
+    private Integer slotNumber;
+
     @ManyToOne(targetEntity = ParkingLot.class)
     @JoinColumn(name = "parkingLotNumber")
     private ParkingLot parkingLot;
 
     @PrePersist
     void preInsert() {
-    if (this.checkinTime == null)
-        this.checkinTime = new Date();
+        if (this.checkinTime == null)
+            this.checkinTime = new Date();
+
+        this.slotNumber = parkingLot.getCars().size() + 1;
     }
 }
