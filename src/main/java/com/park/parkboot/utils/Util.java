@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class Util {
+    public static String BASEURL = "http://localhost:8080";
+
     public static long getTimeDiff(Date toDate, Date fromDate, TimeUnit timeUnit) {
         long diffInMillies = toDate.getTime() - fromDate.getTime();
         return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
