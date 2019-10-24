@@ -73,7 +73,7 @@ public class CarController {
     }
 
     @GetMapping(path = "/unpark/{licenseNumber}")
-    public ResponseEntity<ObjectNode> unparkACarFromParkingLot(@PathVariable("licenseNumber") String licenseNumber) {
+    public ResponseEntity<?> unparkACarFromParkingLot(@PathVariable("licenseNumber") String licenseNumber) {
         Car car = carRepository.findByLicenseNumber(licenseNumber);
 
         if (car == null) {
