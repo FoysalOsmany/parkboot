@@ -15,7 +15,7 @@ public class Util {
         return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 
-    public static ResponseEntity errorResponse(String message, HttpStatus status) {
+    public static ResponseEntity<ObjectNode> errorResponse(String message, HttpStatus status) {
         ObjectNode errorResponse = JsonNodeFactory.instance.objectNode();
 
         errorResponse.put("error", message);
