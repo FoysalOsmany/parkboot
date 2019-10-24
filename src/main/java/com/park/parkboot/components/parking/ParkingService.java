@@ -18,8 +18,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ParkingService {
-    CarRepository carRepository;
-    ParkingLotService parkingLotService;
+    private CarRepository carRepository;
+    private ParkingLotService parkingLotService;
 
     @Autowired
     public ParkingService(CarRepository carRepository, ParkingLotService parkingLotService) {
